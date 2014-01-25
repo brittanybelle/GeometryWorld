@@ -1,3 +1,4 @@
+var gameFPS = 30;
 
 //create stage
 var canvas = document.getElementById("geoworld-canvas");
@@ -29,10 +30,12 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
     gridLines.graphics.lineTo(gridLeft + i * cellSize, gridBottom);
 }
 
-
-
-
-
+// Game loop
+createjs.Ticker.setFPS(gameFPS);
+createjs.Ticker.addEventListener("tick", function (tick) {
+    testLine.render();
+    stage.update();
+});
 
 
 // Test line
