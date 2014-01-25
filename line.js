@@ -9,8 +9,8 @@ function Line(stage) {
         // The following var's are in "player space" (referenced to visible grid, not canvas):
         var xFrom = 0;
         var xTo = gridWidth;
-        var yFrom = this.yIntercept;
-        var yTo = this.slope * xTo + this.yIntercept;
+        var yFrom = self.yIntercept;
+        var yTo = self.slope * xTo + self.yIntercept;
 
         var lineColour = self.picked ? "red" : "black";
         var lineWidth = self.picked ? 3 : 1;
