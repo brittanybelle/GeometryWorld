@@ -30,24 +30,15 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
     gridLines.graphics.lineTo(gridLeft + i * cellSize, gridBottom);
 }
 
-// Game loop
-createjs.Ticker.setFPS(gameFPS);
-createjs.Ticker.addEventListener("tick", function (tick) {
-    testLine.render();
-    stage.update();
-});
-
-
 // Test line
 var testLine = new Line();
 stage.addChild(testLine);
 testLine.yIntercept = 0;    //player space
 testLine.slope = 1;			//player space
 
-
-
-testLine.yIntercept = 15;
-testLine.slope = 5;
-
-testLine.render();
-stage.update();
+// Game loop
+createjs.Ticker.setFPS(gameFPS);
+createjs.Ticker.addEventListener("tick", function (tick) {
+    testLine.render();
+    stage.update();
+});
