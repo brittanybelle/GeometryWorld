@@ -36,7 +36,7 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
 
 
 // Test line
-var testLine = new createjs.Shape();
+var testLine = new Line();
 stage.addChild(testLine);
 testLine.yIntercept = 0;    //player space
 testLine.slope = 1;			//player space
@@ -46,5 +46,5 @@ testLine.slope = 1;			//player space
 testLine.yIntercept = 15;
 testLine.slope = 5;
 
-renderLine(testLine);
-stage.update(); 
+testLine.render();
+stage.update();
