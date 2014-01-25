@@ -39,8 +39,7 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
 // Test line
 var testLine = new Line(stage);
 stage.addChild(testLine);
-testLine.yIntercept = 0;    //player space
-testLine.slope = 1;			//player space
+testLine.loadValuesFromForm();
 
 // Create player character
 var playerCharacter = new Player();

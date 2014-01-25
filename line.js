@@ -1,6 +1,8 @@
 function Line(stage) {
     var self = this;
 
+    var formBox = $('#lineEditor');
+
     self.picked = false;
 
     self.render = function () {
@@ -22,6 +24,11 @@ function Line(stage) {
         self.graphics.lineTo(xTo * cellSize, canvas.height - yTo * cellSize);
     };
 
+    self.loadValuesFromForm = function () {
+        self.yIntercept = parseFloat(formBox.find("input[name='yIntercept']").val());
+        self.slope = parseFloat(formBox.find("input[name='slope']").val());
+    };
+
     function distanceToPoint(x, y) { // in player coordinates
         // xP, yP are in player coordinates
         var xP = x / cellSize;
@@ -31,6 +38,11 @@ function Line(stage) {
 
     function onStageMouseDown(e) {
         self.picked = distanceToPoint(e.stageX, e.stageY) < 0.67;
+        if (self.picked) {
+            formBox.show();
+        } else {
+            formBox.hide();
+        }
         return self.picked;
     }
 

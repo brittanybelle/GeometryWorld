@@ -3,14 +3,46 @@
 <html>
     <head>
         <title>GeoWorld Demo</title>
+        <style>
+            #canvasPane {
+                float: left;
+            }
+            #editorPane {
+                float: left;
+            }
+            #lineEditor {
+                display: none;
+                margin: 0 10px;
+                border: 1px solid black;
+            }
+        </style>
     </head>
 
     <body>
-        
-        <canvas id="geoworld-canvas" width="800" height="800" style="border: 1px solid black; display: block;">Sorry, your browser does not support the <code>&lt;canvas&gt;</code> element.</canvas>
+
+        <div id="canvasPane">
+            <canvas id="geoworld-canvas" width="800" height="800" style="border: 1px solid black; display: block;">Sorry, your browser does not support the <code>&lt;canvas&gt;</code> element.</canvas>
+        </div>
 
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
         <script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+
+        <div id="editorPane">
+            <div id="lineEditor">
+                <form action="#">
+                    <table>
+                        <tr>
+                            <th><label for="yIntercept">y-intercept</label></th>
+                            <td><input type="number" id="yIntercept" name="yIntercept" value="2" onchange="testLine.loadValuesFromForm();"/></td>
+                        </tr>
+                        <tr>
+                            <th><label for="slope">slope</label></th>
+                            <td><input type="number" id="slope" name="slope" value="1" onchange="testLine.loadValuesFromForm();"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
 
         <script src="line.js"></script>
         <script src="player.js"></script>
