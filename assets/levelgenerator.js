@@ -95,16 +95,23 @@ function renderText(stageParent, currentTextId) {
 	}
 
 	var currentTextData = textData[currentTextId];
-	renderTextText.text = currentTextData.textContent || "undefined id " + currentTextId;
+	var visible = typeof currentTextData != "undefined";
 
-	renderTextText.x = textBoxPositionX + textBoxWidth / 2;
-	renderTextText.y = textBoxPositionY + textBoxBuffer;
-	renderTextText.lineWidth = textBoxWidth;
-	renderTextText.textAlign = "center";
-//		renderTextText.maxWidth =
+	renderTextBoxGraphic.visible = visible;
+	renderTextText.visible = visible;
 
-	renderTextBoxGraphic.graphics.clear();
-	renderTextBoxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
+	if (visible) {
+		renderTextText.text = currentTextData.textContent;
+
+		renderTextText.x = textBoxPositionX + textBoxWidth / 2;
+		renderTextText.y = textBoxPositionY + textBoxBuffer;
+		renderTextText.lineWidth = textBoxWidth;
+		renderTextText.textAlign = "center";
+	//		renderTextText.maxWidth =
+
+		renderTextBoxGraphic.graphics.clear();
+		renderTextBoxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
+	}
 }
 
 var levelData = [
@@ -112,9 +119,6 @@ var levelData = [
 ];
 
 var textData = {
-	"level0": {
-		textContent: "Hi"
-	},
 	"win": {
 		textContent: "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
 	}
