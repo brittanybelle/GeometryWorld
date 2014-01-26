@@ -19,6 +19,7 @@ var gridTop = 0;
 var gridBottom = canvas.height;
 
 var currentLevel = 0;
+var currentTextId = undefined; // blech
 
 // draw the background
 renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize);
@@ -46,8 +47,8 @@ textBoxAlpha = 0.7;
 
 //////////
 // FOR DEBUGGING:
-playerHasWon = true;
-renderWinText(stage);
+//playerHasWon = true;
+//renderWinText(stage);
 //////////
 
 // Set up level/win conditions:
@@ -74,6 +75,7 @@ function resetCards() {
 
 function resetGame() {
 	currentLevel = 0;
+	currentTextId = "level0";
     playerCharacter.reset();
     levelGoal.reset(currentLevel);
     testLine.reset();
@@ -100,7 +102,7 @@ createjs.Ticker.addEventListener("tick", function (tick) {
         levelGoal.animate();
 	    processLevelState(playerCharacter);
 
-        //renderWinText(stage); // NOTE: will probably replace this with a more general text box/method
+        renderText(stage, currentTextId); // NOTE: will probably replace this with a more general text box/method
 
         frameClock -= 1;
     }

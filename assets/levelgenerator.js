@@ -58,36 +58,64 @@ var checkWinConditions = function (playerObject, currentLevel) {
 };
 
 function processLevelState(playerObject) { // a perfectly good name for having three hours left
-	if (!playerHasWon) {
-		if (checkWinConditions(playerObject, currentLevel)) {
-			winSound.play();
-			playerHasWon = true;
-			console.log("TRIGGER");
-		}
-	}
-}
-
-var renderWinText = function(stageParent) {
 	if (playerHasWon) {
+		return;
+	}
 
-		var boxGraphic = new createjs.Shape();
-		stageParent.addChild(boxGraphic);
+	if (checkWinConditions(playerObject, currentLevel)) {
+		console.log("TRIGGER (" + currentLevel + ")");
+		winSound.play();
 
-		textContent = "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
+		if (currentLevel >= levelData.length-1) {
+			currentTextId = "win";
+			playerHasWon = true;
+			console.log("No more levels");
+			return;
+		}
 
-		var winText = new createjs.Text(textContent, "20px Arial", "black");
-		stageParent.addChild(winText);
-		winText.x = textBoxPositionX + textBoxWidth / 2;
-		winText.y = textBoxPositionY + textBoxBuffer;
-		winText.lineWidth = textBoxWidth;
-		winText.textAlign = "center";
-//		winText.maxWidth =
-
-		boxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
+		currentLevel += 1;
+		currentTextId = "level" + currentLevel;
+		levelGoal.reset(currentLevel);
 	}
 }
 
+
+var renderTextBoxGraphic;
+var renderTextText;
+
+function renderText(stageParent, currentTextId) {
+	// Hacks
+	if (typeof renderTextBoxGraphic == "undefined") {
+		renderTextBoxGraphic = new createjs.Shape();
+		stageParent.addChild(renderTextBoxGraphic);
+	}
+	if (typeof renderTextText == "undefined") {
+		renderTextText = new createjs.Text("no text", "20px Arial", "black");
+		stageParent.addChild(renderTextText);
+	}
+
+	var currentTextData = textData[currentTextId];
+	renderTextText.text = currentTextData.textContent || "undefined id " + currentTextId;
+
+	renderTextText.x = textBoxPositionX + textBoxWidth / 2;
+	renderTextText.y = textBoxPositionY + textBoxBuffer;
+	renderTextText.lineWidth = textBoxWidth;
+	renderTextText.textAlign = "center";
+//		renderTextText.maxWidth =
+
+	renderTextBoxGraphic.graphics.clear();
+	renderTextBoxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
+}
 
 var levelData = [
 	{ goalPosition: {x: 740, y: 60} }
 ];
+
+var textData = {
+	"level0": {
+		textContent: "Hi"
+	},
+	"win": {
+		textContent: "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
+	}
+};
