@@ -1,8 +1,14 @@
-function Editor() {
+function Editor(initialYIntercept, initialSlope) {
     var self = this;
 
     // TODO Level controller should remove all children of #editorPane during initialization
-    var formBox = $('<div class="editor"><span class="equation">y = <span class="card">2</span>x + <span class="card">12</span></span></div>');
+    var formBoxHtml =
+        '<div class="editor">' +
+            '<span class="equation">' +
+                'y = <span class="card">' + initialSlope + '</span> x + <span class="card">' + initialYIntercept + '</span>' +
+            '</span>' +
+        '</div>';
+    var formBox = $(formBoxHtml);
     $('#editorPane').append(formBox);
 
     self.setPicked = function (picked) {
