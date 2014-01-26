@@ -23,7 +23,6 @@ var data = {
 var spriteSheet = new createjs.SpriteSheet(data);
 
 var jumpSound = new Audio("assets/sound/jump.wav");
-jumpSound.volume = 0.5;
 
 function Player() { };
 

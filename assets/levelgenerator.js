@@ -1,5 +1,4 @@
 var winSound = new Audio("assets/sound/win.wav");
-winSound = 0.8;
 
 function LevelGoal() { }
 LevelGoal.prototype = new createjs.Shape();

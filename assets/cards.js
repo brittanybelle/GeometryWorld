@@ -1,5 +1,4 @@
 var cardChangeSound = new Audio("assets/sound/power.wav");
-cardChangeSound.volume = 0.5;
 
 function CardController(/* shapes */) { // this is not the right interface design
     var self = this;
