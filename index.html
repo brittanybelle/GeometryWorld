@@ -30,18 +30,9 @@
 
         <div id="editorPane">
             <div id="lineEditor">
-                <form action="#">
-                    <table>
-                        <tr>
-                            <th><label for="yIntercept">y-intercept</label></th>
-                            <td><input type="number" id="yIntercept" name="yIntercept" value="2" onchange="testLine.loadValuesFromForm();"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="slope">slope</label></th>
-                            <td><input type="number" id="slope" name="slope" value="1" onchange="testLine.loadValuesFromForm();"/></td>
-                        </tr>
-                    </table>
-                </form>
+                <span class="equation">
+                    y = <input type="number" class="card" value="3" onchange="testLine.loadValuesFromForm()"/> x + <input type="number" class="card" value="2" onchange="testLine.loadValuesFromForm()"/>
+                </span>
             </div>
         </div>
 

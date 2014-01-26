@@ -10,11 +10,11 @@ function Editor(formBox) {
     };
 
     self.getYIntercept = function () {
-        return parseFloat(formBox.find("input[name='yIntercept']").val());
+        return parseFloat(formBox.find("input[class='card']:eq(1)").val());
     };
 
     self.getSlope = function () {
-        return parseFloat(formBox.find("input[name='slope']").val());
+        return parseFloat(formBox.find("input[class='card']:eq(0)").val());
     };
 
     self.move = function (y, slope) {
