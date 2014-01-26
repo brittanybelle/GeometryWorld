@@ -22,7 +22,7 @@ var gridBottom = canvas.height;
 renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize);
 
 // line objects
-var testLine = new Line(stage, 0, 0.75);
+var testLine = new Line(stage, 0, 0.5);
 var secondLine = new Line(stage, 10, 1);
 var listOfLines = [testLine, secondLine];
 var cardController = new CardController(testLine, secondLine); // this is not the right interface design
@@ -56,6 +56,31 @@ var playerHasWon = false;
 levelGoal = new LevelGoal();
 levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
 
+function resetCards() {
+    function addCard(value) {
+        var card = $('<div class="card"><span class="card">' + value + '</span></div>');
+        $('#inventoryPane').append(card);
+    }
+
+    $('#inventoryPane').empty();
+
+    // Use strings to avoid floating point problems
+    addCard("3");
+    addCard("1");
+    addCard("0");
+    addCard("9");
+    addCard("0.2");
+}
+
+function resetGame() {
+    playerCharacter.reset();
+    levelGoal.reset(goalPositionX, goalPositionY, goalRadius);
+    testLine.reset();
+    secondLine.reset();
+    resetCards();
+    cardController.reset();
+}
+
 // Game loop
 var frameClock = 0;
 createjs.Ticker.setFPS(gameFPS);
@@ -82,3 +107,10 @@ createjs.Ticker.addEventListener("tick", function (tick) {
     stage.update();
 
 });
+
+
+function startGame() {
+    $('#splashPane').hide();
+    $('#gamePane').show();
+    resetGame();
+}

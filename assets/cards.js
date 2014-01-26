@@ -1,5 +1,4 @@
 var cardChangeSound = new Audio("assets/sound/power.wav");
-cardChangeSound.volume = 0.5;
 
 function CardController(/* shapes */) { // this is not the right interface design
     var self = this;
@@ -14,7 +13,7 @@ function CardController(/* shapes */) { // this is not the right interface desig
         cardChangeSound.play();
     };
 
-    $(function () {
+    self.reset = function () {
         $("div.card").draggable({
             revert: function (dropped) {
                 return !dropped;
@@ -30,6 +29,7 @@ function CardController(/* shapes */) { // this is not the right interface desig
                 self.dropCard(ui.draggable, this);
             }
         });
-    });
+    };
 
+    self.reset();
 }

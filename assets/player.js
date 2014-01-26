@@ -23,13 +23,13 @@ var data = {
 var spriteSheet = new createjs.SpriteSheet(data);
 
 var jumpSound = new Audio("assets/sound/jump.wav");
-jumpSound.volume = 0.5;
 
 function Player() { };
 
 Player.prototype = new createjs.Sprite(spriteSheet, "idle");
 
-Player.prototype.initialize = function () {
+Player.prototype.reset = function () {
+	playerHasWon = false;
 
 	this.name = "robot player";
 	this.snapToPixel = false;
@@ -54,6 +54,7 @@ Player.prototype.initialize = function () {
 };
 
 Player.prototype.resolvePhysics = function (ListOfLineObjects) {
+Player.prototype.initialize = Player.prototype.reset;
 
 	// Update x-position
 	this.x = this.x + this.xDirection * this.xSpeed;
