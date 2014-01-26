@@ -22,6 +22,9 @@ var data = {
 
 var spriteSheet = new createjs.SpriteSheet(data);
 
+var jumpSound = new Audio("assets/sound/jump.wav");
+jumpSound.volume = 0.5;
+
 function Player() { };
 
 Player.prototype = new createjs.Sprite(spriteSheet, "idle");
@@ -101,5 +104,6 @@ Player.prototype.jump = function () {
 	if (!this.isJumping) {
 		this.gotoAndPlay("jump");
 		this.yVelocity -= jumpAmount;
+		jumpSound.play();
 	}
 };
