@@ -45,4 +45,10 @@ function Editor(initialYIntercept, initialSlope) {
 
         formBox.css({ position: "absolute", left: canvasOffset.left, top: canvasOffset.top + y });
     };
+
+    self.reset = function () {
+        formBox.hide();
+        formBox.find("span.card:eq(1)").text(initialYIntercept);
+        formBox.find("span.card:eq(0)").text(initialSlope);
+    };
 }

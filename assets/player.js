@@ -28,7 +28,8 @@ function Player() { };
 
 Player.prototype = new createjs.Sprite(spriteSheet, "idle");
 
-Player.prototype.initialize = function () {
+Player.prototype.reset = function () {
+	playerHasWon = false;
 
 	this.name = "robot player";
 	this.snapToPixel = false;
@@ -48,6 +49,8 @@ Player.prototype.initialize = function () {
 	this.isJumping = true;
 
 };
+
+Player.prototype.initialize = Player.prototype.reset;
 
 Player.prototype.resolvePhysics = function (LineObject) {
 

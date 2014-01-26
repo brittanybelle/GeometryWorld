@@ -38,6 +38,12 @@ function Line(stage, initialYIntercept, initialSlope) {
         self.editor.move(canvas.height - self.yIntercept * cellSize, self.slope);
     };
 
+    self.reset = function () {
+        self.picked = false;
+        self.editor.reset();
+        self.move(initialYIntercept, initialSlope);
+    };
+
     function distanceToPoint(x, y) { // in player coordinates
         // xP, yP are in player coordinates
         var xP = x / cellSize;

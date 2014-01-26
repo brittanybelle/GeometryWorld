@@ -13,7 +13,7 @@ function CardController(/* shapes */) { // this is not the right interface desig
         cardChangeSound.play();
     };
 
-    $(function () {
+    self.reset = function () {
         $("div.card").draggable({
             revert: function (dropped) {
                 return !dropped;
@@ -29,6 +29,7 @@ function CardController(/* shapes */) { // this is not the right interface desig
                 self.dropCard(ui.draggable, this);
             }
         });
-    });
+    };
 
+    self.reset();
 }

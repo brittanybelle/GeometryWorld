@@ -40,6 +40,35 @@ var playerHasWon = false;
 levelGoal = new LevelGoal();
 levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
 
+function resetCards() {
+    function addCard(value) {
+        var card = $('<div class="card"><span class="card">' + value + '</span></div>');
+        $('#inventoryPane').append(card);
+    }
+
+    $('#inventoryPane').empty();
+
+    // Use strings to avoid floating point problems
+    addCard("3");
+    addCard("1");
+    addCard("0");
+    addCard("9");
+    addCard("0.2");
+}
+
+function resetGame() {
+    playerCharacter.reset();
+    levelGoal.reset(goalPositionX, goalPositionY, goalRadius);
+    testLine.reset();
+    secondLine.reset();
+    resetCards();
+    cardController.reset();
+}
+
+$(function () {
+    resetGame();
+});
+
 var frameClock = 0;
 
 // Game loop
