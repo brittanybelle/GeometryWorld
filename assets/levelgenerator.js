@@ -2,20 +2,21 @@ var winSound = new Audio("assets/sound/win.wav");
 
 function LevelGoal() { }
 LevelGoal.prototype = new createjs.Shape();
-LevelGoal.prototype.initialize = function (stageParent, xPos, yPos, rad) {
+LevelGoal.prototype.initialize = function (stageParent, rad) {
 // (this should be called once, when the level is first initialized)
 
 	stageParent.addChild(this);
 
     this.radius = rad;
-    this.reset(xPos, yPos);
 
     this.graphics.clear();
     this.currentAnimationStep = 0;
 
 }
 
-LevelGoal.prototype.reset = function (xPos, yPos) {
+LevelGoal.prototype.reset = function (level) {
+	var xPos = levelData[level].goalPosition.x;
+	var yPos = levelData[level].goalPosition.y;
     this.x = xPos / 2; // need to add this factor b/c Shape()s have weird coord spaces
     this.y = yPos / 2;
 };
@@ -33,7 +34,7 @@ LevelGoal.prototype.animate = function() {
 	}
 }
 
-var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
+var checkWinConditions = function (playerObject, currentLevel) {
 	// Note: player's x, y coords are defined to be located at the bottom, center of the sprite animation.
 	// i.e. as follows (x, y coords are located at the 'x'):
 	//  ___
@@ -41,6 +42,8 @@ var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
 	// |   |
 	// |_x_| 
 	//
+	var goalPositionX = levelData[currentLevel].goalPosition.x;
+	var goalPositionY = levelData[currentLevel].goalPosition.y;
 	var upperBoundPlayer = playerObject.y - playerObject.height;
 	var lowerBoundPlayer = playerObject.y;
 	var rightBoundPlayer = playerObject.x + playerObject.width / 2;
@@ -70,8 +73,13 @@ var renderWinText = function(stageParent) {
 		winText.y = textBoxPositionY + textBoxBuffer;
 		winText.lineWidth = textBoxWidth;
 		winText.textAlign = "center";
-//		winText.maxWidth = 
+//		winText.maxWidth =
 
 		boxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
 	}
 }
+
+
+var levelData = [
+	{ goalPosition: {x: 740, y: 60} }
+];

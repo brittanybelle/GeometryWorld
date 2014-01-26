@@ -18,6 +18,8 @@ var gridRight = canvas.width;
 var gridTop = 0;
 var gridBottom = canvas.height;
 
+var currentLevel = 0;
+
 // draw the background
 renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize);
 
@@ -49,12 +51,10 @@ renderWinText(stage);
 //////////
 
 // Set up level/win conditions:
-var goalPositionX = 740;
-var goalPositionY = 60;
 var goalRadius = 35;
 var playerHasWon = false;
 levelGoal = new LevelGoal();
-levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
+levelGoal.initialize(stage, goalRadius);
 
 function resetCards() {
     function addCard(value) {
@@ -73,8 +73,9 @@ function resetCards() {
 }
 
 function resetGame() {
+	currentLevel = 0;
     playerCharacter.reset();
-    levelGoal.reset(goalPositionX, goalPositionY);
+    levelGoal.reset(currentLevel);
     testLine.reset();
     secondLine.reset();
     resetCards();
@@ -97,7 +98,7 @@ createjs.Ticker.addEventListener("tick", function (tick) {
 
         // Functions that run less frequently (graphics/animations)
         levelGoal.animate();
-        checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
+        checkWinConditions(playerCharacter, currentLevel);
 
         //renderWinText(stage); // NOTE: will probably replace this with a more general text box/method
 
