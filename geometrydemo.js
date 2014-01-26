@@ -37,7 +37,7 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
 }
 
 // Test line
-var testLine = new Line(stage);
+var testLine = new Line(stage, $('#lineEditor'));
 stage.addChild(testLine);
 testLine.loadValuesFromForm();
 

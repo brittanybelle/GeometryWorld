@@ -1,9 +1,8 @@
-function Line(stage) {
+function Line(stage, editorForm) {
     var self = this;
 
-    var formBox = $('#lineEditor');
-
     self.picked = false;
+    self.editor = new Editor(editorForm);
 
     self.render = function () {
         self.graphics.clear();
@@ -25,8 +24,8 @@ function Line(stage) {
     };
 
     self.loadValuesFromForm = function () {
-        self.yIntercept = parseFloat(formBox.find("input[name='yIntercept']").val());
-        self.slope = parseFloat(formBox.find("input[name='slope']").val());
+        self.yIntercept = self.editor.getYIntercept();
+        self.slope = self.editor.getSlope();
     };
 
     function distanceToPoint(x, y) { // in player coordinates
@@ -38,11 +37,7 @@ function Line(stage) {
 
     function onStageMouseDown(e) {
         self.picked = distanceToPoint(e.stageX, e.stageY) < 0.67;
-        if (self.picked) {
-            formBox.show();
-        } else {
-            formBox.hide();
-        }
+        self.editor.setPicked(self.picked);
         return self.picked;
     }
 
