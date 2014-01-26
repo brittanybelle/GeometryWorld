@@ -1,5 +1,9 @@
-function Editor(formBox) {
+function Editor() {
     var self = this;
+
+    // TODO Level controller should remove all children of #editorPane during initialization
+    var formBox = $('<div class="editor"><span class="equation">y = <span class="card">2</span>x + <span class="card">12</span></span></div>');
+    $('#editorPane').append(formBox);
 
     self.setPicked = function (picked) {
         if (picked) {

@@ -1,8 +1,8 @@
-function Line(stage, editorForm) {
+function Line(stage) {
     var self = this;
 
     self.picked = false;
-    self.editor = new Editor(editorForm);
+    self.editor = new Editor();
 
     self.render = function () {
         self.graphics.clear();
