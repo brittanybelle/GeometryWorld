@@ -7,7 +7,7 @@ var frameHeight = 82;
 // Initialize sprite sheet data:
 var data = {
 	framerate: 2,
-    images: ["FinalSpriteSheetMathBot.png"],
+    images: ["assets/FinalSpriteSheetMathBot.png"],
     frames: {
     	width:frameWidth,
     	height:frameHeight,
