@@ -13,11 +13,19 @@ function renderBackground (stageParent, gridWidth, gridLeft, gridRight, gridTop,
 	for(var i = 1; i < gridWidth; ++i) { // Rows
 	    gridLines.graphics.moveTo(gridLeft, gridTop + i * cellSize);
 	    gridLines.graphics.lineTo(gridRight, gridTop + i * cellSize);
+//	    var newTextBox = new createjs.Text(i, "15px Arial", gridColour);
+//	    newTextBox.x = i*cellSize;
+//	    newTextBox.y = canvas.height - 15;
+//	    stageParent.addChild(newTextBox);
 	}
 
-	for(var i = 1; i < gridHeight; ++i) { //Cols
+	for(var i = 1; i < gridHeight; --i) { //Cols
 	    gridLines.graphics.moveTo(gridLeft + i * cellSize, gridTop);
 	    gridLines.graphics.lineTo(gridLeft + i * cellSize, gridBottom);
+//	    var newTextBox = new createjs.Text(i, "15px Arial", gridColour);
+//	    newTextBox.y = i*cellSize;
+//	    newTextBox.x = 15;
+//	    stageParent.addChild(newTextBox);
 	}
 
 
