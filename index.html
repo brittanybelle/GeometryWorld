@@ -1,109 +1,107 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>GeoWorld Demo</title>
-        <style>
-            #gamePane {
-                display: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
-            }
-            #canvasPane {
-                float: left;
-            }
-            #inventoryPane {
-                margin: 0 0.5em;
-                writing-mode: vertical-lr;
-            }
-            #editorPane {
-                font-size: 18pt;
-                font-family: Verdana, sans-serif;
-                z-index: 10;
-            }
-            div.editor {
-                margin: 0.5em 1em;
-                padding: 0.5em 0.75em;
-                border: 1px solid red;
-                background: #ffe6e6;
-                display: none;
-            }
-            span.card {
-                display: inline-block;
-                font-size: 24pt;
-                font-family: Verdana, sans-serif;
-                font-weight: bold;
-                border: 2px solid black;
-                padding: 0.15em 0;
-                height: 1.33em;
-                width: 2em;
-                background: white;
-                text-align: center;
-            }
-            span.card.ui-state-active {
-                border: 2px solid red;
-                background: yellow;
-            }
-            span.card.ui-state-hover {
-                border: 2px solid yellow;
-                background: black;
-                color: yellow;
-            }
-            div.card {
-                float: left;
-                cursor: pointer;
-                z-index: 11;
-                margin: 0.2em;
-            }
-            div.card.ui-draggable-dragging {
-                z-index: 50;
-            }
-        </style>
-    </head>
+<head>
+	<title>GeoWorld Demo</title>
+	<style>
+		#gamePane {
+			display: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+		#canvasPane {
+			float: left;
+		}
+		#inventoryPane {
+			margin: 0 0.5em;
+			writing-mode: vertical-lr;
+		}
+		#editorPane {
+			font-size: 18pt;
+			font-family: Verdana, sans-serif;
+			z-index: 10;
+		}
+		div.editor {
+			margin: 0.5em 1em;
+			padding: 0.5em 0.75em;
+			border: 1px solid red;
+			background: #ffe6e6;
+			display: none;
+		}
+		span.card {
+			display: inline-block;
+			font-size: 24pt;
+			font-family: Verdana, sans-serif;
+			font-weight: bold;
+			border: 2px solid black;
+			padding: 0.15em 0;
+			height: 1.33em;
+			width: 2em;
+			background: white;
+			text-align: center;
+		}
+		span.card.ui-state-active {
+			border: 2px solid red;
+			background: yellow;
+		}
+		span.card.ui-state-hover {
+			border: 2px solid yellow;
+			background: black;
+			color: yellow;
+		}
+		div.card {
+			float: left;
+			cursor: pointer;
+			z-index: 11;
+			margin: 0.2em;
+		}
+		div.card.ui-draggable-dragging {
+			z-index: 50;
+		}
+	</style>
+</head>
 
-    <body>
+<body>
 
-    <h1>GeoWorld Demo</h1>
+	<h1>GeoWorld Demo</h1>
 
+	<div id="splashPane">
+		<h2>Instructions</h2>
+		<button onclick="startGame()">Start</button>
+	</div>
 
-    <div id="splashPane">
-            <h2>Instructions</h2>
-            <button onclick="startGame()">Start</button>
-        </div>
+	<div id="gamePane">
 
-        <div id="gamePane">
+		<div id="controlPane">
+			<button id="resetButton" onclick="resetGame()">Reset Game</button>
+		</div>
 
-            <div id="controlPane">
-                <button id="resetButton" onclick="resetGame()">Reset Game</button>
-            </div>
+		<div id="canvasPane">
+			<canvas id="geoworld-canvas" width="800" height="800" style="border: 1px solid black; display: block;">Sorry, your browser does not support the <code>&lt;canvas&gt;</code> element.</canvas>
+		</div>
 
-            <div id="canvasPane">
-                <canvas id="geoworld-canvas" width="800" height="800" style="border: 1px solid black; display: block;">Sorry, your browser does not support the <code>&lt;canvas&gt;</code> element.</canvas>
-            </div>
+		<div id="inventoryPane">
+		</div>
 
-            <div id="inventoryPane">
-            </div>
+		<div id="editorPane">
+		</div>
 
-            <div id="editorPane">
-            </div>
+	</div>
 
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
 
-        </div>
+	<script src="assets/editor.js"></script>
+	<script src="assets/line.js"></script>
+	<script src="assets/cards.js"></script>
+	<script src="assets/player.js"></script>
+	<script src="assets/keycontrols.js"></script>
+	<script src="assets/levelgenerator.js"></script>
+	<script src="assets/background.js"></script>
+	<script src="assets/geometrydemo.js"></script>
 
-        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
-        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
-
-        <script src="assets/editor.js"></script>
-        <script src="assets/line.js"></script>
-        <script src="assets/cards.js"></script>
-        <script src="assets/player.js"></script>
-        <script src="assets/keycontrols.js"></script>
-        <script src="assets/levelgenerator.js"></script>
-        <script src="assets/background.js"></script>
-        <script src="assets/geometrydemo.js"></script>
-
-    </body>
+</body>
 </html>
