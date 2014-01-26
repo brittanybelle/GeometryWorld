@@ -27,7 +27,7 @@ function Line(stage, editorForm) {
         var yIntercept = self.editor.getYIntercept();
         var slope = self.editor.getSlope();
         self.move(yIntercept, slope);
-    }
+    };
 
     self.move = function (yIntercept, slope) {
         self.yIntercept = yIntercept;
