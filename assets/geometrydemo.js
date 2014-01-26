@@ -22,7 +22,7 @@ var gridBottom = canvas.height;
 renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize);
 
 // line objects
-var testLine = new Line(stage, 0, 0.75);
+var testLine = new Line(stage, 0, 0.5);
 var secondLine = new Line(stage, 10, 1);
 
 var cardController = new CardController(testLine, secondLine); // this is not the right interface design
