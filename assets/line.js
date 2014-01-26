@@ -29,6 +29,8 @@ function Line(stage, initialYIntercept, initialSlope) {
         var yIntercept = self.editor.getYIntercept();
         var slope = self.editor.getSlope();
         self.move(yIntercept, slope);
+	    self.picked = false;
+	    self.editor.setPicked(false);
     };
 
     self.move = function (yIntercept, slope) {
