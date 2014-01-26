@@ -1,13 +1,16 @@
 var playerTimeConstant = 1;
-var jumpAmount = 7;
+var jumpAmount = 9;
+
+var frameWidth = 60;
+var frameHeight = 82;
 
 // Initialize sprite sheet data:
 var data = {
 	framerate: 2,
-    images: ["assets/FinalSpriteSheetMathBot.png"],
+    images: ["FinalSpriteSheetMathBot.png"],
     frames: {
-    	width:125,
-    	height:170,
+    	width:frameWidth,
+    	height:frameHeight,
     	count:4},
     animations: {
     	idle:[0],
@@ -15,6 +18,7 @@ var data = {
     	moveLeft:[1],
     	moveRight:[3]}
 };
+
 
 var spriteSheet = new createjs.SpriteSheet(data);
 
@@ -24,10 +28,15 @@ Player.prototype = new createjs.Sprite(spriteSheet, "idle");
 
 Player.prototype.initialize = function () {
 
-//	this.radius = 15;
+	this.name = "robot player";
+	this.snapToPixel = false;
+	this.regX = frameWidth/2;
+	this.regY = frameHeight;
+	this.width = frameWidth;
+	this.height = frameHeight;
 
-	this.x = 10;
-	this.y = 10;
+	this.x = 30;
+	this.y = 30;
 
 	this.xDirection = 0;
 	this.xSpeed = 4;
@@ -50,14 +59,14 @@ Player.prototype.resolvePhysics = function (LineObject) {
 	this.y = this.y + this.yVelocity * playerTimeConstant;
 
 	// Check collisions ("testLine" only)
-	if (this.y > canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2) ) {
-		this.y = canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2);
+	if (this.y > canvas.height - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize) ) {
+		this.y = canvas.height - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize);
 		this.isJumping = false;
 	}
 
 	// Check that the player stays on the canvas...
-	if (this.x > gridRight/2) { // I don't know why we need to divide by 2 here... it is mysterious
-		this.x = gridRight/2;
+	if (this.x > gridRight) { // I don't know why we need to divide by 2 here... it is mysterious
+		this.x = gridRight;
 		this.vx = 0;
 	}
 
@@ -71,8 +80,8 @@ Player.prototype.resolvePhysics = function (LineObject) {
 		this.yVelocity = 0;
 	}
 
-	if (this.y > gridBottom/2) {
-		this.y = gridBottom/2;
+	if (this.y > gridBottom) {
+		this.y = gridBottom;
 		this.yVelocity = 0;
 		this.isJumping = false;
 	}

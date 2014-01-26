@@ -1,5 +1,5 @@
 var gameFPS = 30;
-var animationFrameRate = 700; // number of ms that passes between each animation update
+var animationFrameRate = 350; // number of ms that passes between each animation update
 
 // Listen for 'keydown' and 'keyup' events
 window.addEventListener("keydown", dealWithKeyDown, false);
@@ -47,8 +47,8 @@ playerCharacter.initialize();
 stage.addChild(playerCharacter);
 
 // Set up level/win conditions:
-var goalPositionX = 370;
-var goalPositionY = 30;
+var goalPositionX = 750;
+var goalPositionY = 50;
 var goalRadius = 35;
 var playerHasWon = false;
 levelGoal = new LevelGoal();

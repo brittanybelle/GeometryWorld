@@ -5,8 +5,8 @@ LevelGoal.prototype.initialize = function (stageParent, xPos, yPos, rad) {
 
 	stageParent.addChild(this);
 
-	this.x = xPos;
-	this.y = yPos;
+	this.x = xPos / 2; // need to add this factor b/c Shape()s have weird coord spaces
+	this.y = yPos / 2;
 	this.radius = rad;
 
     this.graphics.clear();
@@ -31,10 +31,17 @@ LevelGoal.prototype.animate = function() {
 }
 
 var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
-	var upperBoundPlayer = playerObject.y - playerObject.radius;
-	var lowerBoundPlayer = playerObject.y + playerObject.radius;
-	var rightBoundPlayer = playerObject.x + playerObject.radius;
-	var leftBoundPlayer  = playerObject.x - playerObject.radius;
+	// Note: player's x, y coords are defined to be located at the bottom, center of the sprite animation.
+	// i.e. as follows (x, y coords are located at the 'x'):
+	//  ___
+	// |   |
+	// |   |
+	// |_x_| 
+	//
+	var upperBoundPlayer = playerObject.y + playerObject.height;
+	var lowerBoundPlayer = playerObject.y;
+	var rightBoundPlayer = playerObject.x + playerObject.width / 2;
+	var leftBoundPlayer  = playerObject.x - playerObject.width / 2;
 	if (!playerHasWon) {
 		if ( leftBoundPlayer < goalPositionX && rightBoundPlayer > goalPositionX ){
 			if ( upperBoundPlayer < goalPositionY && lowerBoundPlayer > goalPositionY ) {
