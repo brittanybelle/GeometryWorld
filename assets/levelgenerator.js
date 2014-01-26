@@ -7,17 +7,17 @@ LevelGoal.prototype.initialize = function (stageParent, xPos, yPos, rad) {
 
 	stageParent.addChild(this);
 
-    this.reset(xPos, yPos, rad);
+    this.radius = rad;
+    this.reset(xPos, yPos);
 
     this.graphics.clear();
     this.currentAnimationStep = 0;
 
 }
 
-LevelGoal.prototype.reset = function (xPos, yPos, rad) {
+LevelGoal.prototype.reset = function (xPos, yPos) {
     this.x = xPos / 2; // need to add this factor b/c Shape()s have weird coord spaces
     this.y = yPos / 2;
-    this.radius = rad;
 };
 
 LevelGoal.prototype.animate = function() {

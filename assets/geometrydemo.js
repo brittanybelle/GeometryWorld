@@ -74,7 +74,7 @@ function resetCards() {
 
 function resetGame() {
     playerCharacter.reset();
-    levelGoal.reset(goalPositionX, goalPositionY, goalRadius);
+    levelGoal.reset(goalPositionX, goalPositionY);
     testLine.reset();
     secondLine.reset();
     resetCards();
