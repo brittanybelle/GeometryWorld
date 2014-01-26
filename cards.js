@@ -11,13 +11,21 @@ function CardController(/* shapes */) { // this is not the right interface desig
     };
 
     $(function () {
-        $("div.card").draggable({ revert: function (dropped) {
-            return !dropped;
-        } });
+        $("div.card").draggable({
+            revert: function (dropped) {
+                return !dropped;
+            },
+            revertDuration: 200
+        });
 
-        $("#editorPane span.card").droppable({ drop: function (event, ui) {
-            self.dropCard(ui.draggable, this);
-        } });
+        $("#editorPane span.card").droppable({
+            activeClass: "ui-state-active",
+            hoverClass: "ui-state-hover",
+            tolerance: "pointer",
+            drop: function (event, ui) {
+                self.dropCard(ui.draggable, this);
+            }
+        });
     });
 
 }

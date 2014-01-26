@@ -40,11 +40,23 @@
                 background: white;
                 text-align: center;
             }
+            span.card.ui-state-active {
+                border: 2px solid red;
+                background: yellow;
+            }
+            span.card.ui-state-hover {
+                border: 2px solid yellow;
+                background: black;
+                color: yellow;
+            }
             div.card {
                 float: left;
                 cursor: pointer;
                 z-index: 11;
                 margin: 0.2em;
+            }
+            div.card.ui-draggable-dragging {
+                z-index: 50;
             }
         </style>
     </head>
