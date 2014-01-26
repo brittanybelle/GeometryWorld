@@ -2,7 +2,8 @@
 
 <html>
 <head>
-	<title>Geometry World (Demo)</title>
+	<meta charset="UTF-8">
+	<title>Geometry World</title>
 	<style>
 		#gamePane {
 			display: none;
@@ -44,6 +45,18 @@
 		    font-size: 18px;
 		}
 		#resetButton:hover {
+			background-color: #ffff00;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 18px;
+		}
+		#showButton {
+			background-color: #ffd700;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 18px;
+		}
+		#showButton:hover {
 			background-color: #ffff00;
 			font-family: 'Arial';
 			font-color: #000000;
@@ -91,9 +104,10 @@
 
 <body>
 
-	<h1>GeoWorld Demo</h1>
+	<h1>Geometry World</h1>
 
 	<div id="splashPane">
+		<button id="showButton" onclick="hideCredits()">Hide Info</button>
 		<h2>Instructions</h2>
 			<div>
 				<p><ul>
@@ -103,12 +117,24 @@
 					<li>Collect all the stars to win!</li>
 				</ul></p>
 			</div>
+		<h2>Credits</h2>
+			<div>
+				<p><ul>
+					<li><b><a href="http://www.brittanywelsh.com">Brittany Welsh</a></b>: design, coding, writing</li>
+					<li><b>William Ono</b>: design, coding, sound effects</li>
+					<li><b><a href="http://www.christelbodenbender.com/">Christel Bodenbender</a></b>: design, art/graphics</li>
+					<li>The background music is <a href="http://magnatune.com/artists/albums/kristiantaus-lights?song=1"><i>Watching</i>, by Kristian Taus</a>, used under a creative commons licence</li>
+				</ul></p>
+			</div>
+	</div>
+	<div id="startPane">
 		<button id="startButton" onclick="startGame()">Start!</button>
 	</div>
 
 	<div id="gamePane">
 
 		<div id="controlPane">
+			<button id="showButton" onclick="showCredits()">Show Info</button>
 			<button id="resetButton" onclick="resetGame()">Reset Game</button>
 		</div>
 

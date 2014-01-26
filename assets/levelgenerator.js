@@ -117,7 +117,7 @@ function renderText(stageParent, currentTextId) {
 	//		renderTextText.maxWidth =
 
 		renderTextBoxGraphic.graphics.clear();
-		renderTextBoxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
+		renderTextBoxGraphic.graphics.beginFill("rgba(255,255,130,0.75)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
 	}
 }
 
@@ -132,27 +132,27 @@ var levelData = [
 
 var textData = {
 	"level0": {
-		textContent: "Ooh! That star looks so shiny!"
+		textContent: "\n Ooh! That star looks so shiny!"
 	},
 	"level1": {
-		textContent: "Sometimes I get the sense that there is more to this world than meets the eye... \n Like there is something my sensory input cannot access."
+		textContent: "Sometimes I get the sense that there is more to this world than meets the eye... \n \n Like there is something my sensory input cannot access."
 	},
 	"level2": {
-		textContent: "Something that makes the world tick. \n Some kind of rules, some underlying logic. \n [Use your mouse to click on a line!]"
+		textContent: "Something that makes the world tick. Some kind of rules, some underlying logic. \n \n [Use your mouse to click on a line!]"
 	},
 	"level3": {
-		textContent: "The world is so complicated and vast. \n If only I knew why things are the way they are..."
+		textContent: "The world is so complicated and vast. \n \n If only I knew why things are the way they are."
 	},
 	"level4": {
 		textContent: "I can write down a guess, an equation. But I know they are only my \nhumble approximations of something so much bigger than myself."
 	},
 	"level5": {
-		textContent: "I wish I could see the structure of reality. \n But I am just a little robot. I can only measure, and graph, and model, and imagine."
+		textContent: "I wish I could see the structure of reality. But I am just a little robot. \n I can only measure, and graph, and model, and imagine."
 	},
 	"win": {
-		textContent: "FIN."
+		textContent: "\nFIN."
 	},
 	"lose": {
-		textContent: "Oh no! I fell out of the notebook!! :( \n [Press 'reset' to try again!]"
+		textContent: "Oh no! I fell out of the notebook!! :( \n \n [press 'reset' to try again]"
 	}
 };
