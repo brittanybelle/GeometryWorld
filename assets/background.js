@@ -19,7 +19,7 @@ function renderBackground (stageParent, gridWidth, gridLeft, gridRight, gridTop,
 //	    stageParent.addChild(newTextBox);
 	}
 
-	for(var i = 1; i < gridHeight; --i) { //Cols
+	for(var i = 1; i < gridHeight; ++i) { //Cols
 	    gridLines.graphics.moveTo(gridLeft + i * cellSize, gridTop);
 	    gridLines.graphics.lineTo(gridLeft + i * cellSize, gridBottom);
 //	    var newTextBox = new createjs.Text(i, "15px Arial", gridColour);
