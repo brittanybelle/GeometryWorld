@@ -10,22 +10,19 @@ LevelGoal.prototype.initialize = function (stageParent, xPos, yPos, rad) {
 	this.radius = rad;
 
     this.graphics.clear();
-    this.graphics.beginFill("yellow").beginStroke("black").drawCircle( this.x, this.y, this.radius );
     this.currentAnimationStep = 0;
-
-	stageParent.update();
 
 }
 
 LevelGoal.prototype.animate = function() {
 	if (this.currentAnimationStep == 0) {
 	    this.graphics.clear();
-	    this.graphics.beginFill("yellow").beginStroke("orange").drawPolyStar( this.x, this.y, this.radius, 5, 2, 30 );
+	    this.graphics.beginFill("yellow").beginStroke("orange").setStrokeStyle(3).drawPolyStar( this.x, this.y, this.radius, 5, 2, 30 );
 	    this.currentAnimationStep = 1;
 	}
 	else if (this.currentAnimationStep == 1) {
 	    this.graphics.clear();
-	    this.graphics.beginFill("yellow").beginStroke("orange").drawPolyStar( this.x, this.y, this.radius, 5, 2.5, 30 );
+	    this.graphics.beginFill("yellow").beginStroke("orange").setStrokeStyle(3).drawPolyStar( this.x, this.y, this.radius, 5, 2.5, 30 );
 	    this.currentAnimationStep = 0;
 	}
 }

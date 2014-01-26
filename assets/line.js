@@ -16,7 +16,7 @@ function Line(stage, initialYIntercept, initialSlope) {
         var yTo = self.slope * xTo + self.yIntercept;
 
         var lineColour = self.picked ? "red" : "black";
-        var lineWidth = self.picked ? 3 : 1;
+        var lineWidth = self.picked ? 3 : 2;
 
         // Set graphics
         self.graphics.beginStroke(lineColour);

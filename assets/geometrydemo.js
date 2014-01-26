@@ -18,24 +18,10 @@ var gridRight = canvas.width;
 var gridTop = 0;
 var gridBottom = canvas.height;
 
-// create grid object
-var gridLines = new createjs.Shape();
-stage.addChild(gridLines);
+// draw the background
+renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize);
 
-// draw the grid
-gridLines.graphics.beginStroke("lightblue");
-
-for(var i = 1; i < gridWidth; ++i) { // Rows
-    gridLines.graphics.moveTo(gridLeft, gridTop + i * cellSize);
-    gridLines.graphics.lineTo(gridRight, gridTop + i * cellSize);
-}
-
-for(var i = 1; i < gridHeight; ++i) { //Cols
-    gridLines.graphics.moveTo(gridLeft + i * cellSize, gridTop);
-    gridLines.graphics.lineTo(gridLeft + i * cellSize, gridBottom);
-}
-
-// Test line
+// line objects
 var testLine = new Line(stage, 0, 0.75);
 var secondLine = new Line(stage, 10, 1);
 
@@ -47,8 +33,8 @@ playerCharacter.initialize();
 stage.addChild(playerCharacter);
 
 // Set up level/win conditions:
-var goalPositionX = 750;
-var goalPositionY = 50;
+var goalPositionX = 740;
+var goalPositionY = 60;
 var goalRadius = 35;
 var playerHasWon = false;
 levelGoal = new LevelGoal();

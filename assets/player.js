@@ -45,8 +45,6 @@ Player.prototype.initialize = function () {
 	this.gravity = 0.3;
 	this.isJumping = true;
 
-//	this.setBounds(0, 0, 10, 10);
-
 };
 
 Player.prototype.resolvePhysics = function (LineObject) {
