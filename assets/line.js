@@ -54,7 +54,10 @@ function Line(stage, initialYIntercept, initialSlope) {
     function onStageMouseDown(e) {
         self.picked = distanceToPoint(e.stageX, e.stageY) < 0.67;
         self.editor.setPicked(self.picked);
-        return self.picked;
+	    if (self.picked) {
+		    self.editor.move(canvas.height - self.yIntercept * cellSize, initialSlope);
+	    }
+	    return self.picked;
     }
 
     stage.on("stagemousedown", onStageMouseDown);
