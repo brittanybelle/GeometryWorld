@@ -7,6 +7,7 @@ LevelGoal.prototype.initialize = function (stageParent, rad) {
 
 	stageParent.addChild(this);
 
+	this.visible = false;
     this.radius = rad;
 
     this.graphics.clear();
@@ -19,6 +20,11 @@ LevelGoal.prototype.reset = function (level) {
 	var yPos = levelData[level].goalPosition.y;
     this.x = xPos / 2; // need to add this factor b/c Shape()s have weird coord spaces
     this.y = yPos / 2;
+	this.visible = true;
+};
+
+LevelGoal.prototype.vanish = function () {
+	this.visible = false;
 };
 
 LevelGoal.prototype.animate = function() {
@@ -69,6 +75,7 @@ function processLevelState(playerObject) { // a perfectly good name for having t
 		if (currentLevel >= levelData.length-1) {
 			currentTextId = "win";
 			playerHasWon = true;
+			levelGoal.vanish();
 			console.log("No more levels");
 			return;
 		}
