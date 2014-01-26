@@ -65,10 +65,6 @@ function resetGame() {
     cardController.reset();
 }
 
-$(function () {
-    resetGame();
-});
-
 // Game loop
 var frameClock = 0;
 createjs.Ticker.setFPS(gameFPS);
@@ -96,3 +92,10 @@ createjs.Ticker.addEventListener("tick", function (tick) {
     stage.update();
 
 });
+
+
+function startGame() {
+    $('#splashPane').hide();
+    $('#gamePane').show();
+    resetGame();
+}
