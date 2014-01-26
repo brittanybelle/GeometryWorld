@@ -1,43 +1,39 @@
+var playerTimeConstant = 1;
+var jumpAmount = 7;
 
-function Player() {
-}
+function Player() { }
 
 Player.prototype = new createjs.Shape();
 
 Player.prototype.initialize = function () {
 
+	this.radius = 15;
+
 	this.x = 10;
 	this.y = 10;
 
-	this.vx = 0;
-	this.vy = 0;
+	this.xDirection = 0;
+	this.xSpeed = 4;
 
-	this.ax = 0;
-	this.ay = 0;
-
-	this.radius = 15;
+	this.yVelocity = 0;
 	this.gravity = 0.3;
+	this.isJumping = true;
 
 };
 
-var timeConstant = 1;
-
 Player.prototype.resolvePhysics = function (LineObject) {
 
-	// Update position
-	this.x = this.x + this.vx * timeConstant;
-	this.y = this.y + this.vy * timeConstant;
+	// Update x-position
+	this.x = this.x + this.xDirection * this.xSpeed;
 
-	// Update speed
-	this.vx = this.vx + this.ax * timeConstant;
-	this.vy = this.vy + this.gravity * timeConstant;
-
-	// Update acceleration
-	this.ax = -this.vx / timeConstant;
+	// Update y-position
+	this.yVelocity = this.yVelocity + this.gravity * playerTimeConstant;
+	this.y = this.y + this.yVelocity * playerTimeConstant;
 
 	// Check collisions ("testLine" only)
 	if (this.y > canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2) ) {
 		this.y = canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2);
+		this.isJumping = false;
 		//console.log("yInt = " + LineObject.yIntercept + "    slope = " + LineObject.slope);
 	}
 
@@ -54,16 +50,23 @@ Player.prototype.resolvePhysics = function (LineObject) {
 
 	if (this.y < gridTop) {
 		this.y = gridTop;
-		this.vy = 0;
+		this.yVelocity = 0;
 	}
 
 	if (this.y > gridBottom/2) {
 		this.y = gridBottom/2;
-		this.vy = 0;
+		this.yVelocity = 0;
+		this.isJumping = false;
 	}
 
 	console.log("x position = " + this.x + "  ;  y position = " + this.y);
 
+}
+
+Player.prototype.jump = function () {
+	if (!this.isJumping) {
+		this.yVelocity -= jumpAmount;
+	}
 }
 
 Player.prototype.render = function () {
@@ -72,23 +75,5 @@ Player.prototype.render = function () {
     this.graphics.clear();
     this.graphics.beginFill("red").drawCircle( this.x, this.y, this.radius );
 
-};
-
-Player.prototype.moveLeft = function() {
-	this.ax -= 5;
 }
-
-Player.prototype.moveRight = function() {
-	this.ax += 5;
-}
-
-Player.prototype.jump = function () {
-	if (this.vy == 0) {
-		this.vy -= 5;
-	}
-}
-
-Player.prototype.tick = function (event) {
-
-};
 
