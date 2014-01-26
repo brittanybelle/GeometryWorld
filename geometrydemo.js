@@ -47,7 +47,7 @@ stage.addChild(playerCharacter);
 // Set up level/win conditions:
 var goalPositionX = 370;
 var goalPositionY = 30;
-var goalRadius = 15;
+var goalRadius = 35;
 var playerHasWon = false;
 levelGoal = new LevelGoal();
 levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
