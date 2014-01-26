@@ -115,10 +115,14 @@ function renderText(stageParent, currentTextId) {
 }
 
 var levelData = [
-	{ goalPosition: {x: 740, y: 60} }
+	{ goalPosition: {x: 740, y: 60} },
+	{ goalPosition: {x: 20, y: 300} },
 ];
 
 var textData = {
+	"level1": {
+		textContent: "this is level 2 text"
+	},
 	"win": {
 		textContent: "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
 	}
