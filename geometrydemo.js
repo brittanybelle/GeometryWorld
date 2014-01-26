@@ -11,7 +11,7 @@ var canvas = document.getElementById("geoworld-canvas");
 var stage = new createjs.Stage(canvas);
 
 // determine grid parameters
-var gridWidth = 50;
+var gridWidth = 30;
 var gridHeight = gridWidth;
 var cellSize = canvas.width / gridWidth;
 var gridLeft = 0;
@@ -51,13 +51,14 @@ stage.addChild(playerCharacter);
 function dealWithKeyboard(event) {
     if (event.keyCode == keyCodeLeftArrow) { playerCharacter.moveLeft(); }
     if (event.keyCode == keyCodeRightArrow) { playerCharacter.moveRight(); }
-    //if (event.keyCode == keyCodeUpArrow) { playerCharacter.jump(); }
+    if (event.keyCode == keyCodeUpArrow) { playerCharacter.jump(); }
 }
 
 // Game loop
 createjs.Ticker.setFPS(gameFPS);
 createjs.Ticker.addEventListener("tick", function (tick) {
     testLine.render();
+    playerCharacter.resolvePhysics();
     playerCharacter.render();
     stage.update();
 });
