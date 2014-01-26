@@ -4,17 +4,59 @@
     <head>
         <title>GeoWorld Demo</title>
         <style>
+            html {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
             #canvasPane {
                 float: left;
             }
+            #inventoryPane {
+                margin: 0 0.5em;
+            }
             #editorPane {
+                font-size: 18pt;
+                font-family: Verdana, sans-serif;
                 z-index: 10;
                 display: none;
             }
             #lineEditor {
-                margin: 10px;
+                margin: 0.5em 1em;
+                padding: 0.5em 0.75em;
                 border: 1px solid red;
-                background: #fff6f6;
+                background: #ffe6e6;
+            }
+            span.card {
+                display: inline-block;
+                font-size: 24pt;
+                font-family: Verdana, sans-serif;
+                font-weight: bold;
+                border: 2px solid black;
+                padding: 0.15em 0;
+                height: 1.33em;
+                width: 2em;
+                background: white;
+                text-align: center;
+            }
+            span.card.ui-state-active {
+                border: 2px solid red;
+                background: yellow;
+            }
+            span.card.ui-state-hover {
+                border: 2px solid yellow;
+                background: black;
+                color: yellow;
+            }
+            div.card {
+                float: left;
+                cursor: pointer;
+                z-index: 11;
+                margin: 0.2em;
+            }
+            div.card.ui-draggable-dragging {
+                z-index: 50;
             }
         </style>
     </head>
@@ -26,27 +68,28 @@
         </div>
 
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+
+        <div id="inventoryPane">
+            <div class="card"><span class="card">3</span></div>
+            <div class="card"><span class="card">1</span></div>
+            <div class="card"><span class="card">0</span></div>
+            <div class="card"><span class="card">9</span></div>
+            <div class="card"><span class="card">0.2</span></div>
+        </div>
 
         <div id="editorPane">
             <div id="lineEditor">
-                <form action="#">
-                    <table>
-                        <tr>
-                            <th><label for="yIntercept">y-intercept</label></th>
-                            <td><input type="number" id="yIntercept" name="yIntercept" value="2" onchange="testLine.loadValuesFromForm();"/></td>
-                        </tr>
-                        <tr>
-                            <th><label for="slope">slope</label></th>
-                            <td><input type="number" id="slope" name="slope" value="1" onchange="testLine.loadValuesFromForm();"/></td>
-                        </tr>
-                    </table>
-                </form>
+                <span class="equation">
+                    y = <span class="card">2</span> x + <span class="card">12</span>
+                </span>
             </div>
         </div>
 
         <script src="editor.js"></script>
         <script src="line.js"></script>
+        <script src="cards.js"></script>
         <script src="player.js"></script>
         <script src="keycontrols.js"></script>
         <script src="levelgenerator.js"></script>
