@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>GeoWorld Demo</title>
+	<title>Geometry World (Demo)</title>
 	<style>
 		#gamePane {
 			display: none;
@@ -22,6 +22,32 @@
 			font-size: 18pt;
 			font-family: Verdana, sans-serif;
 			z-index: 10;
+		}
+		#startButton {
+			background-color: #ffd700;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 40px;
+		    margin-left: 50px;
+		}
+		#startButton:hover {
+			background-color: #ffff00;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 40px;
+		    margin-left: 50px;
+		}
+		#resetButton {
+			background-color: #ffd700;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 18px;
+		}
+		#resetButton:hover {
+			background-color: #ffff00;
+			font-family: 'Arial';
+			font-color: #000000;
+		    font-size: 18px;
 		}
 		div.editor {
 			margin: 0.5em 1em;
@@ -69,7 +95,15 @@
 
 	<div id="splashPane">
 		<h2>Instructions</h2>
-		<button onclick="startGame()">Start</button>
+			<div>
+				<p><ul>
+					<li>Move the robot using the arrow keys.</li>
+					<li>Click on black lines to edit them.</li>
+					<li>Drag numbers from the side of the screen into line parameters to edit them.</li>
+					<li>Collect all the stars to win!</li>
+				</ul></p>
+			</div>
+		<button id="startButton" onclick="startGame()">Start!</button>
 	</div>
 
 	<div id="gamePane">

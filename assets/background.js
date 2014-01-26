@@ -1,12 +1,14 @@
 
 function renderBackground (stageParent, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cellSize) {
 
+	var gridColour = "rgba(30,144,255,0.6)";
+
 	// create grid object
 	var gridLines = new createjs.Shape();
 	stageParent.addChild(gridLines);
 
 	// draw the grid
-	gridLines.graphics.beginStroke("blue");
+	gridLines.graphics.beginStroke(gridColour);
 
 	for(var i = 1; i < gridWidth; ++i) { // Rows
 	    gridLines.graphics.moveTo(gridLeft, gridTop + i * cellSize);
