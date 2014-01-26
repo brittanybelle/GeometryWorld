@@ -13,6 +13,9 @@
             #canvasPane {
                 float: left;
             }
+            #inventoryPane {
+                float: left;
+            }
             #editorPane {
                 font-size: 18pt;
                 font-family: Verdana, sans-serif;
@@ -37,6 +40,10 @@
                 background: white;
                 text-align: center;
             }
+            div.card {
+                cursor: pointer;
+                z-index: 11;
+            }
         </style>
     </head>
 
@@ -47,7 +54,12 @@
         </div>
 
         <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+
+        <div id="inventoryPane">
+            <div class="card"><span class="card">3</span></div>
+        </div>
 
         <div id="editorPane">
             <div id="lineEditor">
