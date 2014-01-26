@@ -39,9 +39,3 @@ var passKeyInfoToPlayerController = function (playerObject) {
 		playerObject.isJumping = true;
 	}
 }
-
-/*
-    if (event.keyCode == keyCodeLeftArrow) { playerCharacter.moveLeft(); }
-    if (event.keyCode == keyCodeRightArrow) { playerCharacter.moveRight(); }
-    if (event.keyCode == keyCodeUpArrow) { playerCharacter.jump(); }
-*/

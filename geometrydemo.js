@@ -46,12 +46,22 @@ var playerCharacter = new Player();
 playerCharacter.initialize();
 stage.addChild(playerCharacter);
 
+// Set up level/win conditions:
+var goalPositionX = 370;
+var goalPositionY = 30;
+var goalRadius = 35;
+var playerHasWon = false;
+levelGoal = new LevelGoal();
+levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
+
 // Game loop
 createjs.Ticker.setFPS(gameFPS);
 createjs.Ticker.addEventListener("tick", function (tick) {
     testLine.render();
+    levelGoal.animate();
     passKeyInfoToPlayerController(playerCharacter);
     playerCharacter.resolvePhysics(testLine);
     playerCharacter.render();
     stage.update();
+    checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
 });
