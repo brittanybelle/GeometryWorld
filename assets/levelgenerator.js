@@ -58,10 +58,20 @@ var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
 
 var renderWinText = function(stageParent) {
 	if (playerHasWon) {
-		var winText = new createjs.Text("you win!", "36px Arial", "red");
+
+		var boxGraphic = new createjs.Shape();
+		stageParent.addChild(boxGraphic);
+
+		textContent = "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
+
+		var winText = new createjs.Text(textContent, "20px Arial", "black");
 		stageParent.addChild(winText);
-		winText.x = 100;
-		winText.y = 100;
-		console.log("WINN");
+		winText.x = textBoxPositionX + textBoxWidth / 2;
+		winText.y = textBoxPositionY + textBoxBuffer;
+		winText.lineWidth = textBoxWidth;
+		winText.textAlign = "center";
+//		winText.maxWidth = 
+
+		boxGraphic.graphics.beginFill("rgba(255,215,0,0.5)").beginStroke("orange").setStrokeStyle(1).drawRect(textBoxPositionX, textBoxPositionY, textBoxWidth, textBoxHeight);
 	}
 }
