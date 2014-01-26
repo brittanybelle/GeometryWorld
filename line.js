@@ -1,7 +1,8 @@
-function Line(stage) {
+function Line(stage, editorForm) {
     var self = this;
 
     self.picked = false;
+    self.editor = new Editor(editorForm);
 
     self.render = function () {
         self.graphics.clear();
@@ -9,8 +10,8 @@ function Line(stage) {
         // The following var's are in "player space" (referenced to visible grid, not canvas):
         var xFrom = 0;
         var xTo = gridWidth;
-        var yFrom = this.yIntercept;
-        var yTo = this.slope * xTo + this.yIntercept;
+        var yFrom = self.yIntercept;
+        var yTo = self.slope * xTo + self.yIntercept;
 
         var lineColour = self.picked ? "red" : "black";
         var lineWidth = self.picked ? 3 : 1;
@@ -22,6 +23,11 @@ function Line(stage) {
         self.graphics.lineTo(xTo * cellSize, canvas.height - yTo * cellSize);
     };
 
+    self.loadValuesFromForm = function () {
+        self.yIntercept = self.editor.getYIntercept();
+        self.slope = self.editor.getSlope();
+    };
+
     function distanceToPoint(x, y) { // in player coordinates
         // xP, yP are in player coordinates
         var xP = x / cellSize;
@@ -31,6 +37,7 @@ function Line(stage) {
 
     function onStageMouseDown(e) {
         self.picked = distanceToPoint(e.stageX, e.stageY) < 0.67;
+        self.editor.setPicked(self.picked);
         return self.picked;
     }
 
