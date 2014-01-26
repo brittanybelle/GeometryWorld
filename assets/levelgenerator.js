@@ -1,3 +1,6 @@
+var winSound = new Audio("assets/sound/win.wav");
+winSound = 0.8;
+
 function LevelGoal() { }
 LevelGoal.prototype = new createjs.Shape();
 LevelGoal.prototype.initialize = function (stageParent, xPos, yPos, rad) {
@@ -45,6 +48,7 @@ var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
 	if (!playerHasWon) {
 		if ( leftBoundPlayer < goalPositionX && rightBoundPlayer > goalPositionX ){
 			if ( upperBoundPlayer < goalPositionY && lowerBoundPlayer > goalPositionY ) {
+                winSound.play();
 				alert("YOU WINNNNNN");
 				playerHasWon = true;
 			}
