@@ -59,6 +59,11 @@
             div.card.ui-draggable-dragging {
                 z-index: 50;
             }
+            #resetButton {
+                position: fixed;
+                bottom: 2px;
+                right: 2px;
+            }
         </style>
     </head>
 
@@ -76,6 +81,10 @@
         </div>
 
         <div id="editorPane">
+        </div>
+
+        <div id="controlPane">
+            <button id="resetButton" onclick="resetGame()">Reset Game</button>
         </div>
 
         <script src="assets/editor.js"></script>
