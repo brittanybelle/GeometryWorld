@@ -4,17 +4,38 @@
     <head>
         <title>GeoWorld Demo</title>
         <style>
+            html {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
             #canvasPane {
                 float: left;
             }
             #editorPane {
+                font-size: 18pt;
+                font-family: Verdana, sans-serif;
                 z-index: 10;
                 display: none;
+                margin: 0.5em 1em;
             }
             #lineEditor {
-                margin: 0.75em;
+                padding: 0.5em 0.75em;
                 border: 1px solid red;
-                background: #fff6f6;
+                background: #ffe6e6;
+            }
+            span.card {
+                display: inline-block;
+                font-size: 24pt;
+                font-family: Verdana, sans-serif;
+                font-weight: bold;
+                border: 2px solid black;
+                padding: 0.15em 0;
+                height: 1.33em;
+                width: 2em;
+                background: white;
+                text-align: center;
             }
         </style>
     </head>
@@ -31,7 +52,7 @@
         <div id="editorPane">
             <div id="lineEditor">
                 <span class="equation">
-                    y = <input type="number" class="card" value="3" onchange="testLine.loadValuesFromForm()"/> x + <input type="number" class="card" value="2" onchange="testLine.loadValuesFromForm()"/>
+                    y = <span class="card">3</span> x + <span class="card">8</span>
                 </span>
             </div>
         </div>
