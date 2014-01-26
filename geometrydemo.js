@@ -39,6 +39,8 @@ var testLine = new Line(stage, $('#editorPane'));
 stage.addChild(testLine);
 testLine.loadValuesFromForm();
 
+var cardController = new CardController(testLine); // this is not the right interface design
+
 // Create player character
 var playerCharacter = new Player();
 playerCharacter.initialize();

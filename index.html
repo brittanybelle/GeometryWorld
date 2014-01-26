@@ -21,9 +21,9 @@
                 font-family: Verdana, sans-serif;
                 z-index: 10;
                 display: none;
-                margin: 0.5em 1em;
             }
             #lineEditor {
+                margin: 0.5em 1em;
                 padding: 0.5em 0.75em;
                 border: 1px solid red;
                 background: #ffe6e6;
@@ -41,6 +41,7 @@
                 text-align: center;
             }
             div.card {
+                display: inline;
                 cursor: pointer;
                 z-index: 11;
             }
@@ -59,12 +60,14 @@
 
         <div id="inventoryPane">
             <div class="card"><span class="card">3</span></div>
+            <div class="card"><span class="card">9</span></div>
+            <div class="card"><span class="card">0.2</span></div>
         </div>
 
         <div id="editorPane">
             <div id="lineEditor">
                 <span class="equation">
-                    y = <span class="card">3</span> x + <span class="card">8</span>
+                    y = <span class="card">2</span> x + <span class="card">12</span>
                 </span>
             </div>
         </div>
