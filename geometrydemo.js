@@ -36,8 +36,6 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
 
 // Test line
 var testLine = new Line(stage);
-stage.addChild(testLine);
-testLine.loadValuesFromForm();
 
 var cardController = new CardController(testLine); // this is not the right interface design
 

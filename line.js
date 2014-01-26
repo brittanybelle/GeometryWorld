@@ -50,6 +50,9 @@ function Line(stage) {
     }
 
     stage.on("stagemousedown", onStageMouseDown);
+
+    stage.addChild(self);
+    self.loadValuesFromForm();
 }
 
 Line.prototype = new createjs.Shape();
