@@ -98,7 +98,7 @@ createjs.Ticker.addEventListener("tick", function (tick) {
 
         // Functions that run less frequently (graphics/animations)
         levelGoal.animate();
-        checkWinConditions(playerCharacter, currentLevel);
+	    processLevelState(playerCharacter);
 
         //renderWinText(stage); // NOTE: will probably replace this with a more general text box/method
 

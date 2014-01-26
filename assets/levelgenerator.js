@@ -48,13 +48,21 @@ var checkWinConditions = function (playerObject, currentLevel) {
 	var lowerBoundPlayer = playerObject.y;
 	var rightBoundPlayer = playerObject.x + playerObject.width / 2;
 	var leftBoundPlayer  = playerObject.x - playerObject.width / 2;
+
+	var touchingGoal = (
+		   (leftBoundPlayer < goalPositionX && rightBoundPlayer > goalPositionX)
+		&& (upperBoundPlayer < goalPositionY && lowerBoundPlayer > goalPositionY)
+	);
+
+	return touchingGoal;
+};
+
+function processLevelState(playerObject) { // a perfectly good name for having three hours left
 	if (!playerHasWon) {
-		if ( leftBoundPlayer < goalPositionX && rightBoundPlayer > goalPositionX ){
-			if ( upperBoundPlayer < goalPositionY && lowerBoundPlayer > goalPositionY ) {
-                //winSound.play();
-				playerHasWon = true;
-				console.log("TRIGGER");
-			}
+		if (checkWinConditions(playerObject, currentLevel)) {
+			winSound.play();
+			playerHasWon = true;
+			console.log("TRIGGER");
 		}
 	}
 }
