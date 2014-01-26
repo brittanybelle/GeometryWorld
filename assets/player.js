@@ -50,8 +50,6 @@ Player.prototype.reset = function () {
 
 	this.isOnUpperLine = true;
 
-	console.log("pos x = " + this.x + "       y = " + this.y);
-
 };
 
 Player.prototype.initialize = Player.prototype.reset;
