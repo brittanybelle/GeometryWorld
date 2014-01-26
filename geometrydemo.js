@@ -57,7 +57,7 @@ function dealWithKeyboard(event) {
 createjs.Ticker.setFPS(gameFPS);
 createjs.Ticker.addEventListener("tick", function (tick) {
     testLine.render();
-    playerCharacter.resolvePhysics();
+    playerCharacter.resolvePhysics(testLine);
     playerCharacter.render();
     stage.update();
 });

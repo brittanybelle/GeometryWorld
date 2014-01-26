@@ -6,8 +6,8 @@ Player.prototype = new createjs.Shape();
 
 Player.prototype.initialize = function () {
 
-	this.x = 100;
-	this.y = 50;
+	this.x = 10;
+	this.y = 10;
 
 	this.vx = 0;
 	this.vy = 0;
@@ -16,13 +16,13 @@ Player.prototype.initialize = function () {
 	this.ay = 0;
 
 	this.radius = 15;
-	this.gravity = 0.1;
+	this.gravity = 0.3;
 
 };
 
 var timeConstant = 1;
 
-Player.prototype.resolvePhysics = function () {
+Player.prototype.resolvePhysics = function (LineObject) {
 
 	// Update position
 	this.x = this.x + this.vx * timeConstant;
@@ -34,6 +34,12 @@ Player.prototype.resolvePhysics = function () {
 
 	// Update acceleration
 	this.ax = -this.vx / timeConstant;
+
+	// Check collisions ("testLine" only)
+	if (this.y > canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2) ) {
+		this.y = canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2);
+		//console.log("yInt = " + LineObject.yIntercept + "    slope = " + LineObject.slope);
+	}
 
 	// Check that the player stays on the canvas...
 	if (this.x > gridRight/2) { // I don't know why we need to divide by 2 here... it is mysterious
