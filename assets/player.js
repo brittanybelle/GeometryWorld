@@ -53,8 +53,9 @@ Player.prototype.reset = function () {
 
 };
 
-Player.prototype.resolvePhysics = function (ListOfLineObjects) {
 Player.prototype.initialize = Player.prototype.reset;
+
+Player.prototype.resolvePhysics = function (ListOfLineObjects) {
 
 	// Update x-position
 	this.x = this.x + this.xDirection * this.xSpeed;
