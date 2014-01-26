@@ -24,7 +24,7 @@ renderBackground(stage, gridWidth, gridLeft, gridRight, gridTop, gridBottom, cel
 // line objects
 var testLine = new Line(stage, 0, 0.75);
 var secondLine = new Line(stage, 10, 1);
-
+var listOfLines = [testLine, secondLine];
 var cardController = new CardController(testLine, secondLine); // this is not the right interface design
 
 // Create player character
@@ -65,7 +65,7 @@ createjs.Ticker.addEventListener("tick", function (tick) {
     testLine.render();
     secondLine.render();
     passKeyInfoToPlayerController(playerCharacter);
-    playerCharacter.resolvePhysics(testLine);
+    playerCharacter.resolvePhysics(listOfLines);
 
     frameClock += tick.delta / animationFrameRate;
     while(frameClock >= 1) {

@@ -48,9 +48,12 @@ Player.prototype.initialize = function () {
 	this.gravity = 0.3;
 	this.isJumping = true;
 
+	this.isOnUpperLine = false;
+	this.isOnLowerLine = false;
+
 };
 
-Player.prototype.resolvePhysics = function (LineObject) {
+Player.prototype.resolvePhysics = function (ListOfLineObjects) {
 
 	// Update x-position
 	this.x = this.x + this.xDirection * this.xSpeed;
@@ -59,11 +62,19 @@ Player.prototype.resolvePhysics = function (LineObject) {
 	this.yVelocity = this.yVelocity + this.gravity * playerTimeConstant;
 	this.y = this.y + this.yVelocity * playerTimeConstant;
 
+	// Next, line collisions. Step 1 is to determine which line is on top...
+
+	var LineObject1 = ListOfLineObjects[0];
+	var LineObject2 = ListOfLineObjects[1];
+
+
+
 	// Check collisions ("testLine" only)
-	if (this.y > canvas.height - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize) ) {
-		this.y = canvas.height - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize);
+	if (this.y > canvas.height - (LineObject1.slope * (this.x) + LineObject1.yIntercept*cellSize) ) {
+		this.y = canvas.height - (LineObject1.slope * (this.x) + LineObject1.yIntercept*cellSize);
 		this.isJumping = false;
 	}
+
 
 	// Check that the player stays on the canvas...
 	if (this.x > gridRight) { // I don't know why we need to divide by 2 here... it is mysterious
