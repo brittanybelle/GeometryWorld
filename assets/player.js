@@ -42,13 +42,15 @@ Player.prototype.reset = function () {
 	this.y = 30;
 
 	this.xDirection = 0;
-	this.xSpeed = 4;
+	this.xSpeed = 8;
 
 	this.yVelocity = 0;
 	this.gravity = 0.3;
 	this.isJumping = true;
 
 	this.isOnUpperLine = true;
+
+	console.log("pos x = " + this.x + "       y = " + this.y);
 
 };
 
@@ -118,9 +120,10 @@ Player.prototype.resolvePhysics = function (ListOfLineObjects) {
 	}
 
 	if (this.y > gridBottom) {
-		this.y = gridBottom;
-		this.yVelocity = 0;
-		this.isJumping = false;
+		//this.y = gridBottom;
+		//this.yVelocity = 0;
+		//this.isJumping = false;
+		currentTextId = "lose";
 	}
 }
 

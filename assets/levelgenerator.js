@@ -115,15 +115,37 @@ function renderText(stageParent, currentTextId) {
 }
 
 var levelData = [
-	{ goalPosition: {x: 740, y: 60} },
-	{ goalPosition: {x: 20, y: 300} },
+	{ goalPosition: {x: 740, y: 360} },
+	{ goalPosition: {x: 70, y: 690} },
+	{ goalPosition: {x: 540, y: 160} },
+	{ goalPosition: {x: 440, y: 720} },
+	{ goalPosition: {x: 60, y: 150} },
+	{ goalPosition: {x: 740, y: 550} },
 ];
 
 var textData = {
+	"level0": {
+		textContent: "Ooh! That star looks so shiny!"
+	},
 	"level1": {
-		textContent: "this is level 2 text"
+		textContent: "Sometimes I get the sense that there is more to this world than meets the eye... \n Like there is something my sensory input cannot access."
+	},
+	"level2": {
+		textContent: "Something that makes the world tick. \n Some kind of rules, some underlying logic. \n [Use your mouse to click on a line!]"
+	},
+	"level3": {
+		textContent: "The world is so complicated and vast. \n If only I knew why things are the way they are..."
+	},
+	"level4": {
+		textContent: "I can write down a guess, an equation. But I know they are only my \nhumble approximations of something so much bigger than myself."
+	},
+	"level5": {
+		textContent: "I wish I could see the structure of reality. \n But I am just a little robot. I can only measure, and graph, and model, and imagine."
 	},
 	"win": {
-		textContent: "this is the song that never ends it goes on and on my friend \n some people started singing it not knowing what it was and now they'll"
+		textContent: "FIN."
+	},
+	"lose": {
+		textContent: "Oh no! I fell out of the notebook!! :( \n [Press 'reset' to try again!]"
 	}
 };

@@ -66,10 +66,11 @@ function resetCards() {
     $('#inventoryPane').empty();
 
     // Use strings to avoid floating point problems
-    addCard("3");
-    addCard("1");
     addCard("0");
-    addCard("9");
+    addCard("1");    
+    addCard("-1");
+    addCard("5");
+    addCard("25");
     addCard("0.2");
 }
 
@@ -94,13 +95,13 @@ createjs.Ticker.addEventListener("tick", function (tick) {
     secondLine.render();
     passKeyInfoToPlayerController(playerCharacter);
     playerCharacter.resolvePhysics(listOfLines);
+    processLevelState(playerCharacter);
 
     frameClock += tick.delta / animationFrameRate;
     while(frameClock >= 1) {
 
         // Functions that run less frequently (graphics/animations)
         levelGoal.animate();
-	    processLevelState(playerCharacter);
 
         renderText(stage, currentTextId); // NOTE: will probably replace this with a more general text box/method
 
