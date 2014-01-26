@@ -40,16 +40,9 @@ stage.addChild(playerCharacter);
 textBoxPositionX = 20;
 textBoxPositionY = 20;
 textBoxWidth = 760;
-textBoxHeight = 70;
-textBoxBuffer = 10;
+textBoxHeight = 80;
+textBoxBuffer = 15;
 textBoxAlpha = 0.7;
-
-
-//////////
-// FOR DEBUGGING:
-//playerHasWon = true;
-//renderWinText(stage);
-//////////
 
 // Set up level/win conditions:
 var goalRadius = 35;
@@ -114,7 +107,16 @@ createjs.Ticker.addEventListener("tick", function (tick) {
 
 
 function startGame() {
+    $('#startPane').hide();
     $('#splashPane').hide();
     $('#gamePane').show();
     resetGame();
+}
+
+function showCredits() {
+    $('#splashPane').show();
+}
+
+function hideCredits() {
+    $('#splashPane').hide();
 }
