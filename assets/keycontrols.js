@@ -2,11 +2,13 @@
 var leftKeyIsPressed = false;
 var rightKeyIsPressed = false;
 var upKeyIsPressed = false;
+var downKeyIsPressed = false;
 
 // shortcuts for useful key codes
 var keyCodeLeftArrow = "37";
 var keyCodeUpArrow = "38";
 var keyCodeRightArrow = "39";
+var keyCodeDownArrow = "40";
 
 // Functions add/remove from 'keysCurrentlyHeldDown' list, as necessary
 var dealWithKeyDown = function (event) {
@@ -16,6 +18,8 @@ var dealWithKeyDown = function (event) {
     	{ rightKeyIsPressed = true; }
     if (event.keyCode == keyCodeUpArrow)
     	{ upKeyIsPressed = true; }
+    if (event.keyCode == keyCodeDownArrow)
+        { downKeyIsPressed = true; }
 }
 
 var dealWithKeyUp = function (event) {
@@ -25,6 +29,8 @@ var dealWithKeyUp = function (event) {
     	{ rightKeyIsPressed = false; }
     if (event.keyCode == keyCodeUpArrow)
     	{ upKeyIsPressed = false; }
+    if (event.keyCode == keyCodeDownArrow)
+        { downKeyIsPressed = false; }
 }
 
 var passKeyInfoToPlayerController = function (playerObject) {
@@ -45,4 +51,9 @@ var passKeyInfoToPlayerController = function (playerObject) {
 		playerObject.jump();
 		playerObject.isJumping = true;
 	}
+
+    if (downKeyIsPressed) {
+        playerObject.isOnUpperLine = false;
+    }
+
 }

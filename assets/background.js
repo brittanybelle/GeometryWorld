@@ -30,12 +30,50 @@ function renderBackground (stageParent, gridWidth, gridLeft, gridRight, gridTop,
 	    animations: { main: [0] }
 	};
 
+	var backgroundDataFlower = {
+	    images: ["assets/backgrounds/flower.png"],
+	    frames: {
+	    	width:233,
+	    	height:362,
+	    	count:1
+	    },
+	    animations: { main: [0] }
+	};
+
+	var backgroundDataSmile = {
+	    images: ["assets/backgrounds/smile.png"],
+	    frames: {
+	    	width:336,
+	    	height:255,
+	    	count:1
+	    },
+	    animations: { main: [0] }
+	};
+
 	var spriteSheetCloudBG = new createjs.SpriteSheet(backgroundDataCloud);
+	var spriteSheetFlowerBG = new createjs.SpriteSheet(backgroundDataFlower);
+	var spriteSheetSmileBG = new createjs.SpriteSheet(backgroundDataSmile);
 
 	var backgroundCloud = new createjs.Sprite(spriteSheetCloudBG);
 		stageParent.addChild(backgroundCloud);
 		backgroundCloud.x = 60;
-		backgroundCloud.y = 60;
+		backgroundCloud.y = 105;
+		backgroundCloud.alpha = 0.8;
+
+	var backgroundFlower = new createjs.Sprite(spriteSheetFlowerBG);
+		stageParent.addChild(backgroundFlower);
+		backgroundFlower.x = 700;
+		backgroundFlower.y = 500;
+		backgroundFlower.scaleX = -0.8;
+		backgroundFlower.scaleY = -backgroundFlower.scaleX;
+		backgroundFlower.alpha = 0.85;
+
+	var backgroundSmile = new createjs.Sprite(spriteSheetSmileBG);
+		stageParent.addChild(backgroundSmile);
+		backgroundSmile.x = 200;
+		backgroundSmile.y = 200;
+		backgroundSmile.scaleX = backgroundSmile.scaleY = 0.3;
+		backgroundSmile.alpha = 0.6;
 
 	stageParent.update();
 }
