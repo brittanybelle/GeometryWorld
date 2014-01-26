@@ -24,8 +24,16 @@ function Line(stage, editorForm) {
     };
 
     self.loadValuesFromForm = function () {
-        self.yIntercept = self.editor.getYIntercept();
-        self.slope = self.editor.getSlope();
+        var yIntercept = self.editor.getYIntercept();
+        var slope = self.editor.getSlope();
+        self.move(yIntercept, slope);
+    }
+
+    self.move = function (yIntercept, slope) {
+        self.yIntercept = yIntercept;
+        self.slope = slope;
+
+        self.editor.move(canvas.height - self.yIntercept * cellSize, self.slope);
     };
 
     function distanceToPoint(x, y) { // in player coordinates
