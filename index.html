@@ -60,23 +60,24 @@
             div.card.ui-draggable-dragging {
                 z-index: 50;
             }
-            #resetButton {
-                position: fixed;
-                bottom: 2px;
-                right: 2px;
-            }
         </style>
     </head>
 
     <body>
 
-        <div id="splashPane">
-            <h1>GeoWorld Demo</h1>
+    <h1>GeoWorld Demo</h1>
+
+
+    <div id="splashPane">
             <h2>Instructions</h2>
             <button onclick="startGame()">Start</button>
         </div>
 
         <div id="gamePane">
+
+            <div id="controlPane">
+                <button id="resetButton" onclick="resetGame()">Reset Game</button>
+            </div>
 
             <div id="canvasPane">
                 <canvas id="geoworld-canvas" width="800" height="800" style="border: 1px solid black; display: block;">Sorry, your browser does not support the <code>&lt;canvas&gt;</code> element.</canvas>
@@ -88,9 +89,6 @@
             <div id="editorPane">
             </div>
 
-            <div id="controlPane">
-                <button id="resetButton" onclick="resetGame()">Reset Game</button>
-            </div>
 
         </div>
 
