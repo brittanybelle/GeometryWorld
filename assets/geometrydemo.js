@@ -40,9 +40,8 @@ var playerHasWon = false;
 levelGoal = new LevelGoal();
 levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
 
-var frameClock = 0;
-
 // Game loop
+var frameClock = 0;
 createjs.Ticker.setFPS(gameFPS);
 createjs.Ticker.addEventListener("tick", function (tick) {
 
@@ -58,8 +57,11 @@ createjs.Ticker.addEventListener("tick", function (tick) {
         // Functions that run less frequently (graphics/animations)
         levelGoal.animate();
         checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
+        renderWinText(stage);
 
         frameClock -= 1;
+
+        console.log("player has won? == " + playerHasWon);
     }
 
     stage.update();

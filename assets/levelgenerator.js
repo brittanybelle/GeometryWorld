@@ -38,17 +38,27 @@ var checkWinConditions = function(playerObject, goalPositionX, goalPositionY) {
 	// |   |
 	// |_x_| 
 	//
-	var upperBoundPlayer = playerObject.y + playerObject.height;
+	var upperBoundPlayer = playerObject.y - playerObject.height;
 	var lowerBoundPlayer = playerObject.y;
 	var rightBoundPlayer = playerObject.x + playerObject.width / 2;
 	var leftBoundPlayer  = playerObject.x - playerObject.width / 2;
 	if (!playerHasWon) {
 		if ( leftBoundPlayer < goalPositionX && rightBoundPlayer > goalPositionX ){
 			if ( upperBoundPlayer < goalPositionY && lowerBoundPlayer > goalPositionY ) {
-                winSound.play();
-				alert("YOU WINNNNNN");
+                //winSound.play();
 				playerHasWon = true;
+				console.log("TRIGGER");
 			}
 		}
+	}
+}
+
+var renderWinText = function(stageParent) {
+	if (playerHasWon) {
+		var winText = new createjs.Text("you win!", "36px Arial", "red");
+		stageParent.addChild(winText);
+		winText.x = 100;
+		winText.y = 100;
+		console.log("WINN");
 	}
 }
