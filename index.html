@@ -15,18 +15,19 @@
             }
             #inventoryPane {
                 margin: 0 0.5em;
+                writing-mode: vertical-lr;
             }
             #editorPane {
                 font-size: 18pt;
                 font-family: Verdana, sans-serif;
                 z-index: 10;
-                display: none;
             }
-            #lineEditor {
+            div.editor {
                 margin: 0.5em 1em;
                 padding: 0.5em 0.75em;
                 border: 1px solid red;
                 background: #ffe6e6;
+                display: none;
             }
             span.card {
                 display: inline-block;
@@ -80,11 +81,6 @@
         </div>
 
         <div id="editorPane">
-            <div id="lineEditor">
-                <span class="equation">
-                    y = <span class="card">2</span> x + <span class="card">12</span>
-                </span>
-            </div>
         </div>
 
         <script src="editor.js"></script>

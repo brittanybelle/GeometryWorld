@@ -36,11 +36,10 @@ for(var i = 1; i < gridHeight; ++i) { //Cols
 }
 
 // Test line
-var testLine = new Line(stage, $('#editorPane'));
-stage.addChild(testLine);
-testLine.loadValuesFromForm();
+var testLine = new Line(stage, 12, 2);
+var secondLine = new Line(stage, 10, 1);
 
-var cardController = new CardController(testLine); // this is not the right interface design
+var cardController = new CardController(testLine, secondLine); // this is not the right interface design
 
 // Create player character
 var playerCharacter = new Player();
@@ -63,6 +62,7 @@ createjs.Ticker.addEventListener("tick", function (tick) {
 
     // Functions that run every tick (physics logic):
     testLine.render();
+    secondLine.render();
     passKeyInfoToPlayerController(playerCharacter);
     playerCharacter.resolvePhysics(testLine);
 

@@ -1,8 +1,10 @@
-function Line(stage, editorForm) {
+function Line(stage, initialYIntercept, initialSlope) {
     var self = this;
 
+    createjs.Shape.call(self);
+
     self.picked = false;
-    self.editor = new Editor(editorForm);
+    self.editor = new Editor(initialYIntercept, initialSlope);
 
     self.render = function () {
         self.graphics.clear();
@@ -50,6 +52,9 @@ function Line(stage, editorForm) {
     }
 
     stage.on("stagemousedown", onStageMouseDown);
+
+    stage.addChild(self);
+    self.move(initialYIntercept, initialSlope);
 }
 
 Line.prototype = new createjs.Shape();
