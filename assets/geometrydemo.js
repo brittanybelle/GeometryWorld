@@ -32,6 +32,22 @@ var playerCharacter = new Player();
 playerCharacter.initialize();
 stage.addChild(playerCharacter);
 
+// Define parameters for the "message box"
+// (x, y) coords are located at top left corner of box; all measurements in pixels
+textBoxPositionX = 20;
+textBoxPositionY = 20;
+textBoxWidth = 760;
+textBoxHeight = 70;
+textBoxBuffer = 10;
+textBoxAlpha = 0.7;
+
+
+//////////
+// FOR DEBUGGING:
+playerHasWon = true;
+renderWinText(stage);
+//////////
+
 // Set up level/win conditions:
 var goalPositionX = 740;
 var goalPositionY = 60;
@@ -57,11 +73,10 @@ createjs.Ticker.addEventListener("tick", function (tick) {
         // Functions that run less frequently (graphics/animations)
         levelGoal.animate();
         checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
-        renderWinText(stage);
+
+        //renderWinText(stage); // NOTE: will probably replace this with a more general text box/method
 
         frameClock -= 1;
-
-        console.log("player has won? == " + playerHasWon);
     }
 
     stage.update();
