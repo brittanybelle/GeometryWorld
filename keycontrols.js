@@ -38,6 +38,7 @@ var passKeyInfoToPlayerController = function (playerObject) {
         playerDirection += 1;
         playerObject.renderRight();
     }
+
 	playerObject.xDirection = playerDirection;
 
 	if (upKeyIsPressed) { 
