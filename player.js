@@ -1,9 +1,25 @@
 var playerTimeConstant = 1;
 var jumpAmount = 7;
 
-function Player() { }
+// Initialize sprite sheet data:
+var data = {
+	framerate: 2,
+    images: ["assets/MathRobotSpriteSheet.png"],
+    frames: {
+    	width:200,
+    	height:200,
+    	count:14},
+    animations: {
+    	idle:[10],
+    	jump:[6],
+    	moveLeft:[1],
+    	moveRight:[3]}
+};
+var spriteSheet = new createjs.SpriteSheet(data);
 
-Player.prototype = new createjs.Shape();
+function Player() { }
+Player.prototype = new createjs.Sprite(spriteSheet, "idle");
+// Player.prototype = new createjs.Shape();		// <---- older version of Player was a Shape();
 
 Player.prototype.initialize = function () {
 
@@ -34,7 +50,6 @@ Player.prototype.resolvePhysics = function (LineObject) {
 	if (this.y > canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2) ) {
 		this.y = canvas.height/2 - (LineObject.slope * (this.x) + LineObject.yIntercept*cellSize/2);
 		this.isJumping = false;
-		//console.log("yInt = " + LineObject.yIntercept + "    slope = " + LineObject.slope);
 	}
 
 	// Check that the player stays on the canvas...
@@ -65,15 +80,12 @@ Player.prototype.resolvePhysics = function (LineObject) {
 
 Player.prototype.jump = function () {
 	if (!this.isJumping) {
+		this.gotoAndPlay("jump");
 		this.yVelocity -= jumpAmount;
 	}
 }
 
-Player.prototype.render = function () {
+Player.prototype.renderLeft = function () { this.gotoAndPlay("moveLeft"); }
 
-	// draw the player
-    this.graphics.clear();
-    this.graphics.beginFill("red").drawCircle( this.x, this.y, this.radius );
-
-}
+Player.prototype.renderRight = function () { this.gotoAndPlay("moveRight"); }
 

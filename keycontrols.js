@@ -30,8 +30,14 @@ var dealWithKeyUp = function (event) {
 var passKeyInfoToPlayerController = function (playerObject) {
 	// this function is intended to be called every tick in order to update player kinematics
 	var playerDirection = 0;
-	if (leftKeyIsPressed)  { playerDirection -= 1; }
-	if (rightKeyIsPressed) { playerDirection += 1; }
+	if (leftKeyIsPressed)  {
+        playerDirection -= 1;
+        playerObject.renderLeft();
+    }
+	if (rightKeyIsPressed) {
+        playerDirection += 1;
+        playerObject.renderRight();
+    }
 	playerObject.xDirection = playerDirection;
 
 	if (upKeyIsPressed) { 

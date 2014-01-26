@@ -1,4 +1,5 @@
 var gameFPS = 30;
+var animationFrameRate = 700;
 
 // Listen for 'keydown' and 'keyup' events
 window.addEventListener("keydown", dealWithKeyDown, false);
@@ -54,14 +55,27 @@ var playerHasWon = false;
 levelGoal = new LevelGoal();
 levelGoal.initialize(stage, goalPositionX, goalPositionY, goalRadius);
 
+var frameClock = 0;
+
 // Game loop
 createjs.Ticker.setFPS(gameFPS);
 createjs.Ticker.addEventListener("tick", function (tick) {
+
+    // Functions that run every tick (physics logic):
     testLine.render();
-    levelGoal.animate();
     passKeyInfoToPlayerController(playerCharacter);
     playerCharacter.resolvePhysics(testLine);
-    playerCharacter.render();
+
+    frameClock += tick.delta / animationFrameRate;
+    while(frameClock >= 1) {
+
+        // Functions that run less frequently (graphics/animations)
+        levelGoal.animate();
+        checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
+
+        frameClock -= 1;
+    }
+
     stage.update();
-    checkWinConditions(playerCharacter, goalPositionX, goalPositionY);
+
 });
